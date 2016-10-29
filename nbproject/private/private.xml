@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/myproject/app/Helpers/FormatHelper.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/app/Library/ReportAPI/Models/MerchantModel.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/app/Library/ReportAPI/Models/TransactionModel.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/resources/views/report/transactions.blade.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/app/Library/ReportAPI/Models/BaseModel.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/app/Http/Controllers/Admin/Transactions.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/public/js/scripts.js</file>
+            <file>file:/C:/xampp/htdocs/myproject/resources/views/layouts/app.blade.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/app/Library/ReportAPI/Report.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/app/Http/Controllers/Administration.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/app/Library/ReportAPI/Modules/Transaction.php</file>
+            <file>file:/C:/xampp/htdocs/myproject/public/plugins/jqueryui/jquery-ui.css</file>
+        </group>
+    </open-files>
+</project-private>

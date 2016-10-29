@@ -29,7 +29,6 @@ class Transactions extends Controller {
 
     public function all(Request $request, $page = 1) {
 
-//        print_R(dateValidation($fromDate));exit;
         $Transaction = new TransactionModel;
         $Transaction->fromDate = $request->get("fromDate");
         $Transaction->toDate = $request->get("toDate");

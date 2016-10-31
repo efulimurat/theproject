@@ -44,7 +44,6 @@ class Transactions extends Controller {
         $Transaction->page = (int) $page;
 
         $list = Report::Transaction()->getList($Transaction)->fetchObject();
-
         $transactionStatusOptions = TransactionModel::statusOptions();
         $data = [
             "transactions" => $list,

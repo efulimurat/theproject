@@ -85,7 +85,21 @@ class Errors extends Base {
         ];
         return $methodSet[$status];
     }
-
+    /**
+    * Common Error Function to prepare error details data for some errors
+    * 
+    * @return void
+    */
+    private function errorApp400() {
+        $view = 400;
+        $viewData = [
+            "title" => "400 Error Occured",
+            "msg" => "An error occured while getting data and returned a message:",
+            "reason" => $this->errorDetails
+        ];
+        $viewData = json_encode($viewData);
+        return $this->prepareErrorPage($view, $viewData);
+    }
     /**
      * Abort on Errors
      * 

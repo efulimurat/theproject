@@ -2,6 +2,8 @@
 
 namespace App\Library\ReportAPI\Models;
 
+use App\Modules\Errors;
+
 class BaseModel {
 
     function __construct() {
@@ -24,6 +26,10 @@ class BaseModel {
                         $validObject = false;
                     }
                 }
+            }
+            if(!$validObject){
+               $Error = new Errors;
+               $Error->setError("App400", "Validation Error.");
             }
             return $validObject;
         }

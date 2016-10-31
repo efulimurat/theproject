@@ -8,13 +8,7 @@ class TransactionModel extends BaseModel {
     public $toDate;
     public $status;
     public $merchantId;
-    
-    public $validations = [
-        "fromDate" => "dateValidation",
-        "toDate" => "dateValidation",
-        "status" => "statusValidation",
-        "merchantId" => "intValidation"
-    ];
+    public $page;
 
     function __construct() {
         parent::__construct();
@@ -22,6 +16,16 @@ class TransactionModel extends BaseModel {
 
     public function validate() {
         return parent::validate();
+    }
+
+    public function validations() {
+        return [
+            "fromDate" => "dateValidation",
+            "toDate" => "dateValidation",
+            "status" => "statusValidation",
+            "merchantId" => "intValidation",
+            "page" => "intValidation"
+        ];
     }
 
     public static function statusOptions() {

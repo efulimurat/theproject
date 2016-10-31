@@ -7,11 +7,7 @@ use \App\Library\ReportAPI\Report;
 use App\Library\ReportAPI\Models\MerchantModel;
 
 class Merchant extends Report {
-
-    public function __construct() {
-         $this->token = Session::get(parent::TOKEN_SESSION_NAME);
-    }
-
+    /*
     public function checkLogin($byPass = false) {
         if ($byPass === true) {
             return false;
@@ -32,17 +28,14 @@ class Merchant extends Report {
             }
         }
     }
-
+*/
     public function doLogin() {
         $merchant = new MerchantModel;
         $merchant->email = env("API_EMAIL");
         $merchant->password = env("API_PASSWORD");
 
-        $loginData = $this->requestData(parent::LoginUrl, $merchant, true)->fetchArray();
+        $loginData = $this->requestData(parent::LoginUrl, $merchant, 0, true)->fetchArray();
         if (!empty($loginData) && $loginData["status"] == "APPROVED") {
-
-            Session::set(parent::TOKEN_SESSION_NAME, $loginData["token"]);
-//            $this->token = $loginData["token"];
             return $loginData;
         } else {
             return false;

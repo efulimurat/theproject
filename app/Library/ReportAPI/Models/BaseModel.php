@@ -10,8 +10,8 @@ class BaseModel {
 
     protected function validate() {
         $validObject = true;
-        if (isset($this->validations)) {
-            $validationRules = $this->validations;
+        if (!empty($this->validations())) {
+            $validationRules = $this->validations();
             foreach ($validationRules as $objName => $validationFunc) {
                 $val = $this->$objName;
                 if (!empty($val)) {
@@ -28,5 +28,5 @@ class BaseModel {
             return $validObject;
         }
     }
-    
+
 }

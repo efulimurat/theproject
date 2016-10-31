@@ -24,4 +24,11 @@ function intValidation($str) {
         return false;
 }
 
+function transactionIdValidation($str) {
+    if (preg_match("/[0-9\-]+/", $str)) {
+        return true;
+    } else
+        return false;
+}
+
 ?>

@@ -10,6 +10,7 @@ if (!empty($transactions)) {
     @if($transactions->current_page == 1)
     <thead>
         <tr>
+            <td></td>
             <td colspan="2">Merchant</td>
             <td>Status</td>
             <td>Total Amount</td>
@@ -20,6 +21,7 @@ if (!empty($transactions)) {
     <tbody>
         @foreach($transactions->data as $transaction)
         <tr class='{{ $statusOptions[$transaction->transaction->merchant->status]["class"] }}'>
+            <td><a href="{{ URL::route("transactions.detail",$transaction->transaction->merchant->transactionId) }}" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a></td>
             <td>{{$transaction->merchant->id}}</td>
             <td>{{$transaction->merchant->name}}</td>
             <td><b>{{$transaction->transaction->merchant->status}}</b></td>

@@ -26,7 +26,7 @@ class Report extends Base {
     const LoginUrl = 'api/v3/merchant/user/login';
 
     /** @var string API Report Url */
-    const ReportUrl = 'api/v3/transaction/report';
+    const ReportUrl = 'api/v3/transactions/report';
 
     /** @var string API Transactions List Url */
     const TransactionListUrl = 'api/v3/transaction/list';
@@ -94,8 +94,7 @@ class Report extends Base {
      * @return \App\Library\ReportAPI\Report
      */
     public function requestData($url, $data, $cacheExpire = 60, $passAuth = false) {
-//Redis::del(self::TOKEN_CACHE_KEY);Exit;
-        //     $this->token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZXJjaGFudFVzZXJJZCI6NTMsInJvbGUiOiJhZG1pbiIsIm1lcmNoYW50SWQiOjMsInN1Yk1lcmNoYW50SWRzIjpbMyw3NCw5MywxMTEsMTM3LDEzOCwxNDIsMTQ1LDE0NiwxNzUsMTg0LDIyMCwyMjEsMjIyLDIyMywyOTQsMzIyLDMyMywzMjcsMzI5LDMzMCwzNDksMzkwLDM5MV0sInRpbWVzdGFtcCI6MTQ3Nzg3MDUxNH0.v088uhTi9j0spRbN92Rc07TXAUvqawCZLCf0WJZ2W9a";
+        
         $this->token = Redis::get(self::TOKEN_CACHE_KEY);
         $this->requestUrl = $url;
         $this->requestData = $data;

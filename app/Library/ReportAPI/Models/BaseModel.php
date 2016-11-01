@@ -12,6 +12,23 @@ class BaseModel {
 
     protected function validate() {
         $validObject = true;
+
+        /** Check Object is defined */
+        $className = get_class($this);
+        $modelObj = new $className;
+        foreach ($this as $obj => $val) {
+            if (!property_exists($modelObj, $obj)) {
+                $validObject = false;
+            }
+        }
+
+        /** Set Object Check Error */
+        if (!$validObject) {
+            $Error = new Errors;
+            $Error->setError("App400", "Unknown Property");
+        }
+
+        /**  Check Validation Rules if defined */
         if (!empty($this->validations())) {
             $validationRules = $this->validations();
             foreach ($validationRules as $objName => $validationFunc) {
@@ -27,12 +44,15 @@ class BaseModel {
                     }
                 }
             }
-            if(!$validObject){
-               $Error = new Errors;
-               $Error->setError("App400", "Validation Error.");
+
+            /** Set Validation Error */
+            if (!$validObject) {
+                $Error = new Errors;
+                $Error->setError("App400", "Validation Errors");
             }
-            return $validObject;
         }
+
+        return $validObject;
     }
 
 }

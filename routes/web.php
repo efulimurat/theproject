@@ -23,18 +23,20 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function () 
     Route::group(['prefix' => 'transactions', 'namespace' => 'Admin'], function () {
         Route::get('list/{page?}/{view?}', 'Transactions@all')->name("transactions.list");
         Route::get('loadInfinity/{page?}', 'Transactions@infinityLoad')->name("transactions.infinity");
+        Route::get('detail/{id}', 'Transactions@detail')->name("transactions.detail");
+    });
+    
+    //Merchant
+    Route::group(['prefix' => 'merchant', 'namespace' => 'Admin'], function () {
+        Route::get('detail/{id?}', 'Merchants@detail')->name("merchants.detail");
+    });
+    
+    //Reports
+    Route::group(['prefix' => 'reports', 'namespace' => 'Admin'], function () {
+        Route::get('main', 'Reports@main')->name("reports.main");
+//        Route::get('list/{fromDate}/{toDate}', 'Reports@all')->name("reports.list")->where(['fromDate' => '[0-9]{4}-[0-9]{2}-[0-9]{2}', 'toDate' => '[0-9]{4}-[0-9]{2}-[0-9]{2}']);;
+        Route::any('list', 'Reports@all')->name("reports.list")->where(['fromDate' => '[0-9]{4}-[0-9]{2}-[0-9]{2}', 'toDate' => '[0-9]{4}-[0-9]{2}-[0-9]{2}']);;
     });
 });
 
-/*
-  Route::group(['prefix' => 'administrator/transactions','middleware' =>'auth'], function () {
-
-  Route::get('transactions/list/{page}','Transactions@listme')->where('slug', '[0-9A-Za-z/]+');
-  //    Route::get('{controller?}/{method?}/{params?}', function($controller, $method = "index", $params = ""){
-  //
-  //            return $controller."/".$method;
-  //    });
-  Route::get('ajax/{method?}', 'Administration@index');
-  });
- */
 Auth::routes();

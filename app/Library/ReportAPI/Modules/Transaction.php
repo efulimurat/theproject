@@ -9,6 +9,7 @@ use App\Library\ReportAPI\Models\BaseModel;
  * Transactions Module
  */
 class Transaction extends Report {
+
     /**
      * Get list of transactions which filtered by model
      * @param BaseModel $transaction transaction model obj
@@ -19,6 +20,14 @@ class Transaction extends Report {
         if ($transaction->page > 1)
             $urlPageStr = "?page=" . $transaction->page;
         return $this->requestData(parent::TransactionListUrl . $urlPageStr, $transaction, 60);
+    }
+
+    public function getDetails(BaseModel $transaction) {
+        return $this->requestData(parent::TransactionUrl, $transaction, 180);
+    }
+    
+    public function getReport(BaseModel $report){
+        return $this->requestData(parent::ReportUrl, $report, 30);
     }
 
 }

@@ -8,6 +8,7 @@ class TransactionModel extends BaseModel {
     public $toDate;
     public $status;
     public $merchantId;
+    public $transactionId;
     public $page;
 
     function __construct() {

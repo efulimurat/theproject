@@ -9,8 +9,7 @@ function FullDate1($datetime) {
 
 function dateValidation($date, $format = 'Y-m-d') {
     $createDate = DateTime::createFromFormat($format, $date);
-
-    if ($createDate->format($format) == $date) {
+    if ($createDate && $createDate->format($format) == $date) {
         return true;
     } else {
         return false;
@@ -29,6 +28,10 @@ function transactionIdValidation($str) {
         return true;
     } else
         return false;
+}
+
+function currencyFormat($number) {
+    return number_format($number, 2, '.', ',');
 }
 
 ?>

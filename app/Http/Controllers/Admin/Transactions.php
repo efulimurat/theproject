@@ -5,34 +5,12 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Illuminate\Support\Facades\Redis;
 use App\Library\ReportAPI\Report;
 use App\Library\ReportAPI\Models\TransactionModel;
 
 class Transactions extends Controller {
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($method = "dashboard") {
-        if (method_exists($this, $method)) {
-            return $this->$method();
-        } else {
-            return $this->dashboard();
-        }
-    }
-
-    public function dashboard() {
-        return view("home");
-    }
-
     public function all(Request $request, $page = 1, $view = "default") {
-
-//        Redis::set('number',61);Redis::expire("number",120);
-//      echo  $user = Redis::get('number');exit;
-
         $Transaction = new TransactionModel;
         $Transaction->fromDate = $request->get("fromDate");
         $Transaction->toDate = $request->get("toDate");
@@ -60,8 +38,24 @@ class Transactions extends Controller {
         return Report::Transaction()->viewContent($viewBlock, $data);
     }
 
+    /**
+     * Transactions Infinity Load
+     * @param Request $request
+     * @param integer $page
+     * @return Transactions
+     */
     public function infinityLoad(Request $request, $page = 1) {
         return self::all($request, $page, "ajax");
+    }
+
+    public function detail($transactionId) {
+        $Transaction = new TransactionModel;
+        $Transaction->transactionId = $transactionId;
+        $details = Report::Transaction()->getDetails($Transaction)->fetchObject();
+        $data = [
+            "transaction" => $details
+        ];
+        return Report::Transaction()->viewContent("report.transactions.detail", $data);
     }
 
 }

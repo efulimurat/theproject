@@ -4,11 +4,19 @@ namespace App\Library\ReportAPI\Models;
 
 class MerchantModel extends BaseModel {
 
-    function __set($key, $val) {
-        $this->$key = $val;
+    public $transactionId;
+
+    function __construct() {
+        parent::__construct();
     }
-    
-    public function validate(){
+
+    public function validate() {
         return parent::validate();
+    }
+
+    public function validations() {
+        return [
+            "transactionId" => "transactionIdValidation",
+        ];
     }
 }

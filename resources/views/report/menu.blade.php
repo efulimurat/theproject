@@ -1,3 +1,6 @@
+@if (Auth::guest())
+
+@else
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
@@ -24,9 +27,8 @@
             
             <ul class="nav navbar-nav navbar-left">
              <li><a href="{{ URL::route("transactions.list")}}">Transactions</a></li>
-             <li><a href="#">Reports</a></li>
-             <li><a href="#">Merchants</a></li>
-             <li><a href="#">Clients</a></li>
+             <li><a href="{{ URL::route("reports.main")}}">Reports</a></li>
+             
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
@@ -59,3 +61,4 @@
         </div>
     </div>
 </nav>
+@endif

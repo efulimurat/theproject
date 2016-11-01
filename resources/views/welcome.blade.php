@@ -75,7 +75,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Murat's Laravel
                 </div>
 
                 <div class="links">

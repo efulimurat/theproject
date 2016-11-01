@@ -9,7 +9,10 @@ use App\Library\ReportAPI\Report;
 use App\Library\ReportAPI\Models\TransactionModel;
 
 class Transactions extends Controller {
-
+    
+    public function dashboard(){
+         return Report::Transaction()->viewContent("admin.welcome");
+    }
     public function all(Request $request, $page = 1, $view = "default") {
         $Transaction = new TransactionModel;
         $Transaction->fromDate = $request->get("fromDate");

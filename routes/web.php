@@ -18,10 +18,10 @@ Route::get('/', function () {
 /*
  * Administrator Control Groups
  */
-Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'administrator', 'middleware' => 'auth', 'namespace' => 'Admin'], function () {
     Route::get('/', 'Transactions@dashboard')->name("administrator.dashboard");
     //Transactions
-    Route::group(['prefix' => 'transactions', 'namespace' => 'Admin'], function () {
+    Route::group(['prefix' => 'transactions'], function () {
         Route::get('/', function() {
             return redirect()->route('transactions.list');
         });
@@ -31,12 +31,12 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function () 
     });
 
     //Merchant
-    Route::group(['prefix' => 'merchant', 'namespace' => 'Admin'], function () {
+    Route::group(['prefix' => 'merchant'], function () {
         Route::get('detail/{id?}', 'Merchants@detail')->name("merchants.detail");
     });
 
     //Reports
-    Route::group(['prefix' => 'reports', 'namespace' => 'Admin'], function () {
+    Route::group(['prefix' => 'reports'], function () {
         Route::get('main', 'Reports@main')->name("reports.main");
 //        Route::get('list/{fromDate}/{toDate}', 'Reports@all')->name("reports.list")->where(['fromDate' => '[0-9]{4}-[0-9]{2}-[0-9]{2}', 'toDate' => '[0-9]{4}-[0-9]{2}-[0-9]{2}']);;
         Route::any('list', 'Reports@all')->name("reports.list")->where(['fromDate' => '[0-9]{4}-[0-9]{2}-[0-9]{2}', 'toDate' => '[0-9]{4}-[0-9]{2}-[0-9]{2}']);

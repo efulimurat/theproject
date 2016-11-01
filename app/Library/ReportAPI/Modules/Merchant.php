@@ -11,8 +11,8 @@ class Merchant extends Report {
     
     public function doLogin() {
         $merchant = new MerchantModel;
-        $merchant->email = env("API_EMAIL");
-        $merchant->password = env("API_PASSWORD");
+        $merchant->email = config('auth.reportapi.email');
+        $merchant->password = config("auth.reportapi.password");
 
         $loginData = $this->requestData(parent::LoginUrl, $merchant, 0, true)->fetchArray();
         if (!empty($loginData) && $loginData["status"] == "APPROVED") {

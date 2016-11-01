@@ -45,7 +45,7 @@ return [
       | your application so that it is used when running Artisan tasks.
       |
      */
-    'url' => env('APP_URL', 'http://reportapi.herokuapp.com/'),
+    'url' => env('APP_URL', 'http://localhost'),
     /*
       |--------------------------------------------------------------------------
       | Application Timezone
@@ -89,7 +89,7 @@ return [
       | will not be safe. Please do this before deploying an application!
       |
      */
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY',"mDlj1rn0P0Zcavjrwmv7"),
     'cipher' => 'AES-256-CBC',
     /*
       |--------------------------------------------------------------------------

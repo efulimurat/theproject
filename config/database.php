@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Heroku ClearDB database config
+ */
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $host = $url["host"];
@@ -7,6 +9,16 @@ $username = $url["user"];
 $password = $url["pass"];
 $database = substr($url["path"], 1);
 
+/**
+ * Heroku Redis Config
+ */
+if (getenv('REDIS_URL')) {
+    $url = parse_url(getenv('REDIS_URL'));
+
+    putenv('REDIS_HOST='.$url['host']);
+    putenv('REDIS_PORT='.$url['port']);
+    putenv('REDIS_PASSWORD='.$url['pass']);
+}
 return [
 
     /*
